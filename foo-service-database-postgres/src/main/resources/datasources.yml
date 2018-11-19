@@ -3,7 +3,7 @@ swarm:
     data-sources:
       FooDS:
        driver-name: postgresql
-       connection-url: jdbc:postgresql://foodb.cloud-examples.svc/foodb
+       connection-url: jdbc:postgresql://foodb.workshop.svc/foodb
        user-name: foo
        password: foo
   jdbc-drivers:
