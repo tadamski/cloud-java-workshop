@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: foo-service
+    version: v2
+  name: foo-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: foo-service
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: foo-service
+        version: v2
+    spec:
+      containers:
+      - env:
+        - name: JAVA_OPTIONS
+          value: -Xms128m -Xmx256m
+        image: cloud-workshop/foo-service:v2
+        imagePullPolicy: IfNotPresent
+        name: foo-service
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
