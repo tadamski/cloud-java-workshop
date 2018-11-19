@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: foo-gateway
+    version: v1
+  name: foo-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: foo-gateway
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: foo-gateway
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: JAVA_OPTIONS
+          value: -Xms128m -Xmx256m
+        image: cloud-workshop/foo-gateway:latest
+        imagePullPolicy: IfNotPresent
+        name: foo-gateway
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP

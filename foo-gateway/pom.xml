@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.packt.swarm.petstore</groupId>
+    <groupId>org.tadamski.examples.cloud</groupId>
     <artifactId>foo-gateway</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
@@ -16,20 +16,20 @@
         <version.war.plugin>2.1.1</version.war.plugin>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
-        <version.wildfly.swarm>2018.3.0</version.wildfly.swarm>
+        <version.thorntail>2.2.1.Final</version.thorntail>
     </properties>
 
 
     <dependencies>
         <dependency>
-            <groupId>org.wildfly.swarm</groupId>
+            <groupId>io.thorntail</groupId>
             <artifactId>jaxrs</artifactId>
-            <version>${version.wildfly.swarm}</version>
+            <version>${version.thorntail}</version>
         </dependency>
         <dependency>
-            <groupId>org.wildfly.swarm</groupId>
+            <groupId>io.thorntail</groupId>
             <artifactId>cdi</artifactId>
-            <version>${version.wildfly.swarm}</version>
+            <version>${version.thorntail}</version>
         </dependency>
     </dependencies>
 
@@ -43,14 +43,18 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.wildfly.swarm</groupId>
-                <artifactId>wildfly-swarm-plugin</artifactId>
-                <version>${version.wildfly.swarm}</version>
+                <groupId>io.thorntail</groupId>
+                <artifactId>thorntail-maven-plugin</artifactId>
+                <version>${version.thorntail}</version>
                 <configuration>
                     <mainClass>org.tadamski.examples.cloud.Main</mainClass>
+                    <jvmArguments>
+                        <jvmArgument>-Xmx128m</jvmArgument>
+                    </jvmArguments>
                 </configuration>
                 <executions>
                     <execution>
+                        <id>package</id>
                         <goals>
                             <goal>package</goal>
                         </goals>

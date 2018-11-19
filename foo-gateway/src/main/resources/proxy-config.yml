@@ -1,5 +1,5 @@
 proxy:
   foo:
-    url: "http://foo-service.cloud-examples.svc:8080"
+    url: "http://foo-service.cloud-workshop.svc:8080"
 
 
