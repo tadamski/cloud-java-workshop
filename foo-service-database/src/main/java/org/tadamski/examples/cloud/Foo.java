@@ -27,7 +27,7 @@ public class Foo {
     private String name;
 
     @Column
-    private int blipCoung;
+    private int blipCount;
 
     public int getId() {
         return id;
@@ -45,11 +45,11 @@ public class Foo {
         this.name = name;
     }
 
-    public int getBlipCoung() {
-        return blipCoung;
+    public int getBlipCount() {
+        return blipCount;
     }
 
-    public void setBlipCoung(int blipCoung) {
-        this.blipCoung = blipCoung;
+    public void setBlipCount(int blipCount) {
+        this.blipCount = blipCount;
     }
 }
