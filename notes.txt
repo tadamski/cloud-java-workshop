@@ -1,7 +1,0 @@
-oc create -f https://raw.githubusercontent.com/wildfly-swarm/sti-wildflyswarm/master/1.0/wildflyswarm-sti-all.json
- 
-oc new-app wildflyswarm-10-centos7~https://github.com/tadamski/devoxxpl2018.git --context-dir=foo-service --name=foo-service
-
-oc delete all -l app=foo-service
-
-minishift start --memory=7000 --disk-size=30GB

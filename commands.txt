@@ -1,0 +1,43 @@
+#START
+minishift profile set cloud-workshop
+minishift config set memory 8GB
+minishift config set cpus 3
+
+minishift config set image-caching true
+minishift config set openshift-version v3.11.0
+minishift addon enable admin-user
+minishift addon enable anyuid
+
+minishift start
+minishift ssh -- sudo setenforce 0
+
+eval $(minishift oc-env)
+eval $(minishift docker-env)
+
+
+#SERVICES
+oc login $(minishift ip):8443 -u tomek -p tomek
+oc new-project workshop
+docker build -t cloud-workshop/foo-service
+docker images
+
+psql -U foo foodb 
+
+#ISTIO
+cd istio-1.0.3
+export ISTIO_HOME=`pwd`
+export PATH=$ISTIO_HOME/bin:$PATH
+
+oc apply -f install/kubernetes/helm/istio/templates/crds.yaml
+oc apply -f install/kubernetes/istio-demo.yaml
+
+oc new-project workshop
+oc adm policy add-scc-to-user privileged -z default -n workshop
+oc adm policy add-role-to-user view tomek -n istio-system
+
+oc apply -f <(istioctl kube-inject -f kubernetes/deployment.yml) -n workshop
+oc apply -f kubernetes/service.yml -n workshop
+
+istioctl create -f istio/destination-rule.yml -n workshop
+istioctl create -f istio/virtual-service.yml -n workshop
+
