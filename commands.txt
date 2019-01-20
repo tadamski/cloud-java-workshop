@@ -40,4 +40,6 @@ oc apply -f kubernetes/service.yml -n workshop
 
 istioctl create -f istio/destination-rule.yml -n workshop
 istioctl create -f istio/virtual-service.yml -n workshop
+istioctl get destinationrule
+istioctl delete destinationrule foo-service
 
