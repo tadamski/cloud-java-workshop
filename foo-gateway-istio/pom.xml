@@ -31,6 +31,11 @@
             <artifactId>cdi</artifactId>
             <version>${version.thorntail}</version>
         </dependency>
+        <dependency>
+            <groupId>io.thorntail</groupId>
+            <artifactId>microprofile-config</artifactId>
+            <version>${version.thorntail}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -47,7 +52,6 @@
                 <artifactId>thorntail-maven-plugin</artifactId>
                 <version>${version.thorntail}</version>
                 <configuration>
-                    <mainClass>org.tadamski.examples.cloud.Main</mainClass>
                     <jvmArguments>
                         <jvmArgument>-Xmx128m</jvmArgument>
                     </jvmArguments>

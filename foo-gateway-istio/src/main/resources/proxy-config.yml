@@ -1,5 +1,0 @@
-proxy:
-  foo:
-    url: "http://foo-service:8080"
-
-
