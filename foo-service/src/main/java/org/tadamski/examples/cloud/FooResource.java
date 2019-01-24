@@ -14,7 +14,7 @@ public class FooResource {
     private Map<String, Foo> foos = new HashMap<>();
 
     public FooResource(){
-        foos.put("gyrd", new Foo("gyrd", 7));
+        foos.put("gyrd", new Foo("gyrd", 5));
     }
 
     @GET

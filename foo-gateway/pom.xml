@@ -52,7 +52,6 @@
                 <artifactId>thorntail-maven-plugin</artifactId>
                 <version>${version.thorntail}</version>
                 <configuration>
-                    <mainClass>org.tadamski.examples.cloud.Main</mainClass>
                     <jvmArguments>
                         <jvmArgument>-Xmx128m</jvmArgument>
                     </jvmArguments>
